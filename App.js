@@ -9,7 +9,10 @@ export default function App() {
   return (
     <View>
       <View>
-        <TextInput />
+        <TextInput
+          placeholder="Course name"
+          style={{ borderColor: "", padding: 30 }}
+        />
         <Button title="Click Me" />
       </View>
     </View>
