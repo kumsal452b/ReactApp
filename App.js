@@ -7,13 +7,29 @@ export default function App() {
     "Open up App.js to start working on your app!"
   );
   return (
-    <View>
-      <View>
+    <View
+      style={{
+        padding: 30,
+        borderColor: "#5d7363",
+      }}
+    >
+      <View
+        style={{
+          flexDirection: "row",
+          justifyContent: "space-between",
+          alignItems: "center",
+        }}
+      >
         <TextInput
           placeholder="Course name"
-          style={{ borderColor: "", padding: 30 }}
+          style={{
+            borderColor: "black",
+            borderWidth: 1,
+            padding: 10,
+            width: "76%",
+          }}
         />
-        <Button title="Click Me" />
+        <Button title="Click Me" style={{}} />
       </View>
     </View>
   );
