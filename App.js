@@ -3,33 +3,24 @@ import React, { useState } from "react";
 import { StyleSheet, Text, View, Button, TextInput } from "react-native";
 
 export default function App() {
-  const [outputText, setOutputText] = useState(
-    "Open up App.js to start working on your app!"
-  );
+  const [enteredGoals, setEnterGoal] = useState("");
+  const [courseGoals, setCourseGoals] = useState([]);
+
+  function goalInputHandler(enteredText) {
+    setEnterGoal(enteredGoals);
+  }
+  const addGoalHandler = () => {
+    console.log(enteredGoals);
+  };
   return (
-    <View
-      style={{
-        padding: 30,
-        borderColor: "#5d7363",
-      }}
-    >
-      <View
-        style={{
-          flexDirection: "row",
-          justifyContent: "space-between",
-          alignItems: "center",
-        }}
-      >
+    <View style={styles.container}>
+      <View style={styles.input}>
         <TextInput
-          placeholder="Course name"
-          style={{
-            borderColor: "black",
-            borderWidth: 1,
-            padding: 10,
-            width: "76%",
-          }}
+          placeholder="Add new course"
+          onChangeText={goalInputHandler}
+          value={enteredGoals}
         />
-        <Button title="Click Me" style={{}} />
+        <Button title="Add" onPress={addGoalHandler} />
       </View>
     </View>
   );
@@ -37,9 +28,13 @@ export default function App() {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    backgroundColor: "#fff",
+    padding: 50,
+  },
+  input: {
+    justifyContent: "space-between",
     alignItems: "center",
-    justifyContent: "center",
+    flexDirection: "row",
+    borderColor: "black",
+    borderWidth: 1,
   },
 });
