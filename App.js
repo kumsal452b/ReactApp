@@ -6,11 +6,12 @@ export default function App() {
   const [enteredGoals, setEnterGoal] = useState("");
   const [courseGoals, setCourseGoals] = useState([]);
 
-  function goalInputHandler(enteredText) {
-    setEnterGoal(enteredGoals);
-  }
+  const goalInputHandler = (enteredText) => {
+    setEnterGoal(enteredText);
+  };
   const addGoalHandler = () => {
-    console.log(enteredGoals);
+    setCourseGoals((currentGoals) => [...currentGoals, enteredGoals]);
+    console.log(courseGoals);
   };
   return (
     <View style={styles.container}>
@@ -21,6 +22,13 @@ export default function App() {
           value={enteredGoals}
         />
         <Button title="Add" onPress={addGoalHandler} />
+      </View>
+      <View>
+        {courseGoals.map((goal) => (
+          <View style={styles.listItem}>
+            <Text>{goal}</Text>
+          </View>
+        ))}
       </View>
     </View>
   );
@@ -36,5 +44,15 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     borderColor: "black",
     borderWidth: 1,
+    marginBottom: 5,
+  },
+  listItem: {
+    padding: 10,
+    backgroundColor:
+      "radial-gradient(circle, rgba(58,151,221,1) 42%, rgba(24,40,87,1) 100%)",
+    borderColor: "black",
+    borderBottomWidth: 1,
+    marginBottom: 5,
+    borderBottomEndRadius: 15,
   },
 });
