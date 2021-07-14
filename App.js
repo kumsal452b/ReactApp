@@ -24,18 +24,9 @@ export default function App() {
       ...currentGoals,
       { key: Math.random().toString(), value: enteredGoals },
     ]);
-    console.log(courseGoals);
   };
   return (
     <View style={styles.container}>
-      <View style={styles.input}>
-        <TextInput
-          placeholder="Add new course"
-          onChangeText={goalInputHandler}
-          value={enteredGoals}
-        />
-        <Button title="Add" onPress={addGoalHandler} />
-      </View>
       <FlatList
         keyExtractor={(item, index) => item.key}
         data={courseGoals}
@@ -48,13 +39,5 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     padding: 50,
-  },
-  input: {
-    justifyContent: "space-between",
-    alignItems: "center",
-    flexDirection: "row",
-    borderColor: "black",
-    borderWidth: 1,
-    marginBottom: 5,
   },
 });
