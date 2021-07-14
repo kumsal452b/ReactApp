@@ -18,7 +18,10 @@ export default function App() {
     setEnterGoal(enteredText);
   };
   const addGoalHandler = () => {
-    setCourseGoals((currentGoals) => [...currentGoals, enteredGoals]);
+    setCourseGoals((currentGoals) => [
+      ...currentGoals,
+      { key: Math.random().toString(), value: enteredGoals },
+    ]);
     console.log(courseGoals);
   };
   return (
@@ -32,10 +35,11 @@ export default function App() {
         <Button title="Add" onPress={addGoalHandler} />
       </View>
       <FlatList
+        keyExtractor={(item, index) => item.key}
         data={courseGoals}
         renderItem={(itemData) => (
           <View style={styles.listItem}>
-            <Text>{itemData.item}</Text>
+            <Text>{itemData.item.value}</Text>
           </View>
         )}
       />
