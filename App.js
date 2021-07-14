@@ -11,15 +11,16 @@ import {
 } from "react-native";
 
 import GoalItem from "./components/GoalItems";
+import GoalInput from "./components/GoalInput";
 
 export default function App() {
-  const [enteredGoals, setEnterGoal] = useState("");
   const [courseGoals, setCourseGoals] = useState([]);
-
-  const goalInputHandler = (enteredText) => {
-    setEnterGoal(enteredText);
-  };
-  const addGoalHandler = () => {
+  const styles = StyleSheet.create({
+    container: {
+      padding: 50,
+    },
+  });
+  const addGoalHandler = (enteredGoals) => {
     setCourseGoals((currentGoals) => [
       ...currentGoals,
       { key: Math.random().toString(), value: enteredGoals },
@@ -27,6 +28,7 @@ export default function App() {
   };
   return (
     <View style={styles.container}>
+      <GoalInput onAddGoal={addGoalHandler} />
       <FlatList
         keyExtractor={(item, index) => item.key}
         data={courseGoals}
@@ -35,9 +37,3 @@ export default function App() {
     </View>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    padding: 50,
-  },
-});
