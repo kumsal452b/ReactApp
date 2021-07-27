@@ -26,6 +26,12 @@ export default function App() {
       { key: Math.random().toString(), value: enteredGoals },
     ]);
   };
+  const removeGoalHandler = (goalId) => {
+    console.log(goalId);
+    setCourseGoals((currentGoals) => {
+      return currentGoals.filter((theGoal) => theGoal.key == goalId);
+    });
+  };
   return (
     <View style={styles.container}>
       <GoalInput onAddGoal={addGoalHandler} />
@@ -35,7 +41,8 @@ export default function App() {
         renderItem={(itemData) => (
           <GoalItem
             title={itemData.item.value}
-            onDelete={() => console.log("Does that work?")}
+            id={itemData.item.key}
+            onDelete={removeGoalHandler}
           />
         )}
       />
