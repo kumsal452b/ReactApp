@@ -6,12 +6,13 @@ const GoalInput = (props) => {
     setEnterGoal(enteredText);
   };
   return (
-    <Modal visible={props.visible}>
-      <View style={styles.input}>
+    <Modal visible={props.visible} animationType="slide">
+      <View style={styles.inputContainer}>
         <TextInput
           placeholder="Add new course"
           onChangeText={goalInputHandler}
           value={enteredGoals}
+          style={styles.input}
         />
         <Button
           title="Add"
@@ -22,10 +23,12 @@ const GoalInput = (props) => {
   );
 };
 const styles = StyleSheet.create({
-  input: {
-    justifyContent: "space-between",
+  inputContainer: {
+    flex: 1,
+    justifyContent: "center",
     alignItems: "center",
-    flexDirection: "row",
+  },
+  input: {
     borderColor: "black",
     borderWidth: 1,
     marginBottom: 5,
