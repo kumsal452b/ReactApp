@@ -20,6 +20,7 @@ export default function App() {
   const styles = StyleSheet.create({
     container: {
       padding: 50,
+      marginTop: 15,
     },
   });
   const addGoalHandler = (enteredGoals) => {

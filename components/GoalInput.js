@@ -32,6 +32,7 @@ const styles = StyleSheet.create({
     borderColor: "black",
     borderWidth: 1,
     marginBottom: 5,
+    width: "80%",
   },
 });
 export default GoalInput;
