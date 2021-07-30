@@ -37,6 +37,7 @@ export default function App() {
     });
   };
   const cancelGoalAditionHandler = () => {
+    console.log(isAddMode);
     setIsAddMode(false);
   };
   return (

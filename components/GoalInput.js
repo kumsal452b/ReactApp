@@ -5,8 +5,8 @@ const GoalInput = (props) => {
   const goalInputHandler = (enteredText) => {
     setEnterGoal(enteredText);
   };
-  const addHandler = function () {
-    props.onAddGoal.bind(this, enteredGoals);
+  const addGoalHandler = () => {
+    props.onAddGoal(enteredGoals);
     setEnterGoal("");
   };
   return (
@@ -19,8 +19,12 @@ const GoalInput = (props) => {
           style={styles.input}
         />
         <View style={styles.containerForButton}>
-          <Button title="Add" onPress={addHandler} style={styles.buttonAdd} />
-          <Button title="Cancel" />
+          <View style={styles.buttonAdd}>
+            <Button title="Add" onPress={addGoalHandler} />
+          </View>
+          <View style={styles.buttonAdd}>
+            <Button title="Cancel" onPress={props.onCancel} color="red" />
+          </View>
         </View>
       </View>
     </Modal>
@@ -34,17 +38,17 @@ const styles = StyleSheet.create({
   },
   input: {
     borderColor: "black",
-    borderWidth: 1,
+    borderBottomWidth: 1,
     marginBottom: 5,
     width: "80%",
   },
   containerForButton: {
     flexDirection: "row",
-    justifyContent: "space-between",
+    justifyContent: "space-around",
     width: "80%",
   },
   buttonAdd: {
-    width: "60%",
+    width: "40%",
   },
   buttonCan: {
     width: "40%",
