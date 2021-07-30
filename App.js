@@ -15,6 +15,8 @@ import GoalInput from "./components/GoalInput";
 
 export default function App() {
   const [courseGoals, setCourseGoals] = useState([]);
+  const [isAddMode, setIsAddMode] = useState(false);
+
   const styles = StyleSheet.create({
     container: {
       padding: 50,
@@ -29,7 +31,7 @@ export default function App() {
   const removeGoalHandler = (goalId) => {
     console.log(goalId);
     setCourseGoals((currentGoals) => {
-      return currentGoals.filter((theGoal) => theGoal.key == goalId);
+      return currentGoals.filter((theGoal) => theGoal.key !== goalId);
     });
   };
   return (
