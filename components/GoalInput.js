@@ -19,7 +19,7 @@ const GoalInput = (props) => {
           style={styles.input}
         />
         <View style={styles.containerForButton}>
-          <Button title="Add" onPress={addHandler} />
+          <Button title="Add" onPress={addHandler} style={styles.buttonAdd} />
           <Button title="Cancel" />
         </View>
       </View>
@@ -40,6 +40,14 @@ const styles = StyleSheet.create({
   },
   containerForButton: {
     flexDirection: "row",
+    justifyContent: "space-between",
+    width: "80%",
+  },
+  buttonAdd: {
+    width: "60%",
+  },
+  buttonCan: {
+    width: "40%",
   },
 });
 export default GoalInput;
