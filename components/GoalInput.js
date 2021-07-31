@@ -1,11 +1,27 @@
 import React, { useState } from "react";
-import { TextInput, Button, View, StyleSheet, Modal } from "react-native";
+import {
+  TextInput,
+  Button,
+  View,
+  StyleSheet,
+  Modal,
+  Alert,
+} from "react-native";
 const GoalInput = (props) => {
   const [enteredGoals, setEnterGoal] = useState("");
   const goalInputHandler = (enteredText) => {
     setEnterGoal(enteredText);
   };
+  const createThreeButtonAlert = () =>
+    Alert.alert("Danger", "You must be enter a text", [
+      { text: "OK", onPress: () => console.log("OK Pressed") },
+    ]);
+
   const addGoalHandler = () => {
+    if (enteredGoals.length === 0) {
+      createThreeButtonAlert();
+      return;
+    }
     props.onAddGoal(enteredGoals);
     setEnterGoal("");
   };
@@ -48,9 +64,6 @@ const styles = StyleSheet.create({
     width: "80%",
   },
   buttonAdd: {
-    width: "40%",
-  },
-  buttonCan: {
     width: "40%",
   },
 });
